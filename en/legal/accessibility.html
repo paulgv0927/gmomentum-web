@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<title>Accessibility statement — GMomentum</title>
+<meta name="description" content="GMomentum's accessibility commitment and how to report barriers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acento:#0E6B62; --acento-clr:#4FB3A5;
+  --noche:#101614; --niebla:#EDF0EE; --papel:#FFFFFF;
+  --linea:#C8CFCA; --linea-noche:rgba(255,255,255,.14);
+  --gris:#5C6764; --gris-noche:#97A5A0;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --texto:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--noche);font-family:var(--texto);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--acento)}
+.zona{width:100%;max-width:760px;margin-inline:auto;padding-inline:clamp(20px,5vw,40px)}
+.barra{border-bottom:1px solid var(--linea)}
+.barra .zona{max-width:1220px;display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+.marca{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:800;font-size:1.18rem;letter-spacing:-.02em;text-decoration:none;color:var(--noche)}
+.cambio{font-size:.9rem;text-decoration:none;color:var(--gris)}
+.cambio:hover{color:var(--noche)}
+main{padding-block:clamp(44px,7vw,80px) clamp(56px,8vw,96px)}
+h1{font-family:var(--display);font-variation-settings:"wdth" 116;font-weight:800;font-size:clamp(2rem,4.6vw,3rem);line-height:1.05;letter-spacing:-.025em;margin:0}
+.fecha{color:var(--gris);font-size:.9rem;margin:14px 0 0}
+h2{font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:600;font-size:1.22rem;letter-spacing:-.015em;margin:44px 0 12px;padding-top:22px;border-top:1px solid var(--linea)}
+h3{font-family:var(--display);font-weight:600;font-size:1.02rem;margin:26px 0 8px}
+p,li{margin:0 0 14px}
+ul{padding-left:20px}
+li{margin-bottom:8px}
+.dato{background:var(--niebla);border-radius:12px;padding:18px 20px;margin:20px 0}
+.dato p{margin:0 0 6px;font-size:.95rem}
+.dato p:last-child{margin:0}
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.94rem}
+th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--linea);vertical-align:top}
+th{font-weight:600}
+.pie{background:var(--noche);color:var(--gris-noche);font-size:.88rem;padding-block:34px}
+.pie .zona{max-width:1220px;display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;align-items:center}
+.pie a{color:#fff;text-decoration:none}
+.pie a:hover{text-decoration:underline}
+:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="zona">
+    <a class="marca" href="../index.html">GMomentum</a>
+    <a class="cambio" href="../../legal/accesibilidad.html">Español</a>
+  </div>
+</header>
+
+<main>
+  <div class="zona">
+    <h1>Accessibility statement</h1>
+    <p class="fecha">Last updated: 13 September 2026</p>
+
+    <p>We want this site to be usable by as many people as possible, whatever way they browse.</p>
+
+    <h2>1. Reference standard</h2>
+    <p>We take the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA as our reference.
+    This site aims to meet them, although it has not been audited by an independent third
+    party.</p>
+
+    <h2>2. What we implemented</h2>
+    <ul>
+      <li>Semantic heading and region structure, so screen readers can move through the page meaningfully.</li>
+      <li>Full keyboard navigation, with a visible focus indicator on every interactive element.</li>
+      <li>Colour contrast checked between text and background, in both the light and dark sections.</li>
+      <li>Descriptive alternative text on every image that carries information.</li>
+      <li>Respect for the operating system's reduced-motion preference: the header animation and the typing text stop if you have it enabled.</li>
+      <li>Labels tied to every form field, and error messages in text rather than colour alone.</li>
+      <li>Responsive layout that works with zoom and on small screens without loss of content.</li>
+    </ul>
+
+    <h2>3. Known limitations</h2>
+    <p>The site uses external services, such as the scheduling calendar, whose accessibility
+    depends on their providers and is outside our control.</p>
+
+    <h2>4. How to report a problem</h2>
+    <p>If you run into an accessibility barrier on this site, write to [EMAIL@YOURDOMAIN.COM]
+    describing the problem and, if you can, the page and the browser or assistive technology you
+    were using. We reply within a maximum of ten business days and work to fix whatever can be
+    fixed.</p>
+
+  </div>
+</main>
+
+<footer class="pie">
+  <div class="zona">
+    <div>© <span id="anio">2026</span> GMomentum. All rights reserved.</div>
+    <div><a href="../index.html">Back to home</a></div>
+  </div>
+</footer>
+<script>document.getElementById("anio").textContent = new Date().getFullYear();</script>
+</body>
+</html>
