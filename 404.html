@@ -12,210 +12,145 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --acento:#0E6B62;
-  --acento-clr:#4FB3A5;
-  --noche:#101614;
-  --grafito:#1B2320;
-  --papel:#FFFFFF;
-  --gris-noche:#97A5A0;
-  --linea:rgba(255,255,255,.14);
+  --acento:#0E6B62;--acento-osc:#0A4F48;--acento-clr:#4FB3A5;
+  --noche:#101614;--niebla:#EDF0EE;--papel:#FFFFFF;
+  --linea:#C8CFCA;--linea-noche:rgba(255,255,255,.14);
+  --gris:#5C6764;--gris-noche:#97A5A0;
   --display:"Archivo","Helvetica Neue",Arial,sans-serif;
   --texto:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --ancho:1220px;--pad:clamp(20px,4vw,40px);
 }
 *,*::before,*::after{box-sizing:border-box}
-html,body{min-height:100%;margin:0}
-body{
-  background:var(--noche);
-  color:var(--papel);
-  font-family:var(--texto);
-  font-size:17px;
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-a{color:inherit}
-.shell{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;position:relative}
-.header,.footer{position:relative;z-index:3}
-.header{border-bottom:1px solid var(--linea)}
-.header-inner,.footer-inner,.content{
-  width:min(100% - 40px,1220px);
-  margin-inline:auto;
-}
-.header-inner{height:78px;display:flex;align-items:center;justify-content:space-between}
-.brand{
-  font-family:var(--display);
-  font-variation-settings:"wdth" 118;
-  font-weight:800;
-  letter-spacing:-.035em;
-  font-size:1.3rem;
-  text-decoration:none;
-}
-.lang{
-  border:1px solid var(--linea);
-  border-radius:999px;
-  padding:8px 13px;
-  color:var(--gris-noche);
-  background:transparent;
-  font:500 .82rem var(--texto);
-  cursor:pointer;
-}
-.lang:hover,.lang:focus-visible{color:var(--papel);border-color:var(--acento-clr)}
-.content{
-  position:relative;
-  z-index:2;
-  display:grid;
-  grid-template-columns:minmax(0,1.05fr) minmax(260px,.95fr);
-  align-items:center;
-  gap:clamp(32px,7vw,96px);
-  padding-block:clamp(64px,10vh,130px);
-}
-.kicker{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  color:var(--acento-clr);
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  font-size:.78rem;
-  font-weight:600;
-  margin:0 0 24px;
-}
-.kicker::before{content:"";width:34px;height:1px;background:currentColor}
-h1{
-  font-family:var(--display);
-  font-variation-settings:"wdth" 118;
-  font-size:clamp(3rem,7vw,6.4rem);
-  line-height:.94;
-  letter-spacing:-.055em;
-  margin:0 0 26px;
-  max-width:780px;
-}
-.copy{color:var(--gris-noche);max-width:580px;margin:0 0 36px;font-size:clamp(1rem,1.5vw,1.15rem)}
-.actions{display:flex;flex-wrap:wrap;gap:12px}
-.btn{
-  min-height:50px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding:12px 20px;
-  border:1px solid var(--linea);
-  border-radius:4px;
-  font-weight:600;
-  text-decoration:none;
-  transition:.2s ease;
-}
-.btn-primary{background:var(--acento);border-color:var(--acento)}
-.btn-primary:hover{background:#0A4F48;border-color:#0A4F48;transform:translateY(-2px)}
-.btn-ghost:hover{border-color:var(--acento-clr);color:var(--acento-clr)}
-.visual{
-  position:relative;
-  aspect-ratio:1;
-  display:grid;
-  place-items:center;
-  max-width:470px;
-  justify-self:end;
-}
-.code{
-  position:relative;
-  z-index:2;
-  font-family:var(--display);
-  font-variation-settings:"wdth" 118;
-  font-size:clamp(7rem,18vw,14rem);
-  font-weight:800;
-  line-height:1;
-  letter-spacing:-.09em;
-  color:transparent;
-  -webkit-text-stroke:1px rgba(255,255,255,.54);
-}
-.orbit,.orbit::before,.orbit::after{
-  position:absolute;
-  border:1px solid var(--linea);
-  border-radius:50%;
-}
-.orbit{inset:8%;animation:spin 18s linear infinite}
-.orbit::before{content:"";inset:15%}
-.orbit::after{content:"";width:13px;height:13px;background:var(--acento-clr);border:0;top:12%;left:12%;box-shadow:0 0 30px var(--acento-clr)}
-.cross{position:absolute;inset:0;background:linear-gradient(transparent calc(50% - .5px),var(--linea) 50%,transparent calc(50% + .5px)),linear-gradient(90deg,transparent calc(50% - .5px),var(--linea) 50%,transparent calc(50% + .5px));opacity:.65}
-.glow{position:absolute;width:60vw;height:60vw;max-width:850px;max-height:850px;border-radius:50%;right:-28vw;top:5%;background:radial-gradient(circle,rgba(14,107,98,.22),transparent 66%);pointer-events:none}
-.footer{border-top:1px solid var(--linea)}
-.footer-inner{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--gris-noche);font-size:.82rem}
-.status{display:flex;align-items:center;gap:9px}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--acento-clr);box-shadow:0 0 12px var(--acento-clr)}
-@keyframes spin{to{transform:rotate(360deg)}}
-@media (max-width:760px){
-  .header-inner{height:68px}
-  .content{grid-template-columns:1fr;padding-block:58px 44px}
-  .visual{order:-1;width:min(72vw,330px);justify-self:center;margin-bottom:-20px}
-  .code{font-size:clamp(6.7rem,35vw,10rem)}
-  .footer-inner{min-height:82px;align-items:flex-start;justify-content:center;flex-direction:column;padding-block:18px}
-}
-@media (prefers-reduced-motion:reduce){.orbit{animation:none}.btn{transition:none}}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--noche);font-family:var(--texto);font-size:17px;line-height:1.58;-webkit-font-smoothing:antialiased}
+a{color:inherit}.zona{width:min(100% - (var(--pad)*2),var(--ancho));margin-inline:auto}
+h1{font-family:var(--display);font-variation-settings:"wdth" 118;font-weight:700;line-height:1.12;letter-spacing:-.028em;margin:0}
+:focus-visible{outline:3px solid var(--acento-clr);outline-offset:3px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--texto);font-size:.98rem;font-weight:600;padding:15px 28px;border:1px solid transparent;border-radius:999px;text-decoration:none;cursor:pointer;transition:background .16s ease,color .16s ease,border-color .16s ease,transform .08s ease}
+.btn:active{transform:translateY(1px)}
+.btn-solido{background:var(--acento);color:#fff}.btn-solido:hover{background:var(--acento-osc)}
+.btn-claro{background:var(--papel);color:var(--noche)}.btn-claro:hover{background:var(--niebla)}
+
+.header{position:absolute;top:0;left:0;right:0;z-index:40;background:transparent;border-bottom:1px solid transparent}
+.header .zona{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.marca{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:800;font-size:1.22rem;letter-spacing:-.02em;text-decoration:none;color:#fff}
+.nav{display:none;gap:28px;font-size:.94rem}
+.nav a{text-decoration:none;padding-block:4px;color:rgba(255,255,255,.76);border-bottom:1px solid transparent;transition:color .2s ease,border-color .2s ease}
+.nav a:hover,.nav a:focus-visible{color:#fff;border-bottom-color:#fff}
+.header .btn{padding:10px 18px;font-size:.9rem;background:transparent;border-color:rgba(255,255,255,.5);color:#fff}
+.header .btn:hover{background:#fff;border-color:#fff;color:var(--noche)}
+@media(min-width:1000px){.nav{display:flex}}
+
+.idioma{position:relative;margin-left:auto}
+.idioma-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:var(--texto);font-size:.9rem;font-weight:600;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.42);border-radius:999px;padding:9px 12px;transition:background .18s ease,color .18s ease,border-color .18s ease}
+.idioma-btn:hover{background:#fff;color:var(--noche);border-color:#fff}
+.idioma-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.idioma-actual{display:none}@media(min-width:1000px){.idioma-btn{padding:9px 15px}.idioma-actual{display:inline-flex}}
+
+.error-hero{position:relative;overflow:hidden;background:var(--noche);color:#fff;min-height:clamp(590px,78vh,760px);display:flex;align-items:center}
+.error-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at center,rgba(79,179,165,.24) 0 1px,transparent 1.6px);background-size:34px 34px;mask-image:linear-gradient(90deg,transparent,black 40%,black 60%,transparent);opacity:.55}
+.error-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(102deg,rgba(16,22,20,.94) 0%,rgba(16,22,20,.76) 48%,rgba(16,22,20,.88) 100%)}
+.error-contenido{position:relative;z-index:2;text-align:center;padding:148px 0 96px}
+.codigo{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:800;font-size:clamp(5rem,13vw,9.6rem);letter-spacing:-.07em;line-height:.8;color:var(--acento-clr);margin-bottom:30px}
+.rotulo{text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:600;color:var(--gris-noche);margin:0 0 17px}
+.error-hero h1{font-size:clamp(2rem,4.4vw,3.3rem);max-width:19ch;margin-inline:auto}
+.intro{max-width:600px;margin:22px auto 0;color:var(--gris-noche);font-size:1.02rem}
+.acciones{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
+
+.pie{background:var(--noche);color:var(--gris-noche);font-size:.9rem;padding-block:54px 40px;border-top:1px solid var(--linea-noche)}
+.pie-rejilla{display:grid;gap:40px}@media(min-width:820px){.pie-rejilla{grid-template-columns:1fr auto;align-items:start}}
+.pie .firma{font-family:var(--display);font-variation-settings:"wdth" 125;font-weight:800;font-size:1.18rem;letter-spacing:-.02em;color:#fff}
+.pie .giro{margin:8px 0 0;font-size:.88rem}
+.pie-base{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 34px;margin-top:44px;padding-top:26px;border-top:1px solid var(--linea-noche)}
+.legales{display:flex;flex-wrap:wrap;gap:14px 34px;font-size:.86rem}
+.legales a{color:var(--gris-noche);text-decoration:none;border-bottom:1px solid transparent}
+.legales a:hover{color:#fff;border-bottom-color:var(--acento-clr)}
+.copy{margin:0;font-size:.82rem}
+.flotante{position:fixed;right:20px;bottom:20px;z-index:50;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;text-decoration:none;box-shadow:0 8px 24px rgba(16,22,20,.28)}
+.flotante:hover{background:#1EB857}.flotante svg{width:28px;height:28px;fill:currentColor}
+@media(max-width:640px){.codigo{margin-bottom:24px}.error-contenido{padding-top:130px}.pie{padding-bottom:90px}}
 </style>
 </head>
 <body>
-<div class="shell">
-  <div class="glow" aria-hidden="true"></div>
-  <header class="header">
-    <div class="header-inner">
-      <a class="brand" href="/">GMomentum</a>
-      <button class="lang" id="lang" type="button">English</button>
+<header class="header">
+  <div class="zona">
+    <a class="marca" id="brand" href="/">GMomentum</a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a id="nav-system" href="/#sistema">el sistema</a>
+      <a id="nav-solutions" href="/#soluciones">soluciones</a>
+      <a id="nav-process" href="/#proceso">cómo trabajamos</a>
+      <a id="nav-faq" href="/#preguntas">preguntas</a>
+    </nav>
+    <div class="idioma">
+      <button class="idioma-btn" id="lang" type="button" aria-label="Cambiar idioma">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
+        <span class="idioma-actual">Español</span>
+      </button>
     </div>
-  </header>
+    <a class="btn" id="header-cta" href="/#contacto">Agendar diagnóstico</a>
+  </div>
+</header>
 
-  <main class="content">
-    <section>
-      <p class="kicker" id="kicker">Señal interrumpida</p>
-      <h1 id="title">Esta página salió del radar.</h1>
-      <p class="copy" id="copy">La dirección puede haber cambiado o ya no existe. Regresa al inicio para seguir construyendo momentum.</p>
-      <div class="actions">
-        <a class="btn btn-primary" id="home" href="/">Volver al inicio <span aria-hidden="true">→</span></a>
-        <a class="btn btn-ghost" id="wa" href="https://wa.me/522214276989?text=Hola%2C%20vi%20su%20sitio%20y%20necesito%20ayuda." target="_blank" rel="noopener">Hablar por WhatsApp</a>
+<main>
+  <section class="error-hero">
+    <div class="zona error-contenido">
+      <div class="codigo" aria-label="Error 404">404</div>
+      <p class="rotulo" id="label">Página no encontrada</p>
+      <h1 id="title">Parece que esta página perdió el momentum.</h1>
+      <p class="intro" id="intro">La dirección puede haber cambiado o ya no existe. Te llevamos de vuelta para que sigas explorando.</p>
+      <div class="acciones">
+        <a class="btn btn-claro" id="home" href="/">Volver al inicio</a>
+        <a class="btn btn-solido" id="contact" href="/#contacto">Hablar con nosotros</a>
       </div>
-    </section>
-
-    <div class="visual" aria-hidden="true">
-      <div class="cross"></div>
-      <div class="orbit"></div>
-      <div class="code">404</div>
     </div>
-  </main>
+  </section>
+</main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <span>© <span id="year"></span> GMomentum</span>
-      <span class="status"><span class="dot"></span><span id="status">Growth marketing y automatización · México</span></span>
+<footer class="pie">
+  <div class="zona">
+    <div class="pie-rejilla">
+      <div><div class="firma">GMomentum</div><p class="giro" id="tagline">Growth marketing y automatización, México</p></div>
     </div>
-  </footer>
-</div>
+    <div class="pie-base">
+      <nav class="legales" id="legal">
+        <a href="/legal/aviso-de-privacidad.html">Privacidad</a>
+        <a href="/legal/terminos-y-condiciones.html">Términos</a>
+        <a href="/legal/politica-de-cookies.html">Cookies</a>
+        <a href="/legal/accesibilidad.html">Accesibilidad</a>
+      </nav>
+      <p class="copy">© <span id="year"></span> GMomentum. <span id="rights">Todos los derechos reservados.</span></p>
+    </div>
+  </div>
+</footer>
+
+<a class="flotante" id="wa" href="https://wa.me/522214276989?text=Hola%2C%20vi%20su%20sitio%20y%20necesito%20ayuda." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.06 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.86 9.86 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.21-8.24 8.21z"/></svg>
+</a>
+
 <script>
-const copy={
-  es:{
-    lang:"English",title:"Esta página salió del radar.",kicker:"Señal interrumpida",
-    copy:"La dirección puede haber cambiado o ya no existe. Regresa al inicio para seguir construyendo momentum.",
-    home:"Volver al inicio",wa:"Hablar por WhatsApp",status:"Growth marketing y automatización · México",
-    url:"/",waUrl:"https://wa.me/522214276989?text="+encodeURIComponent("Hola, vi su sitio y necesito ayuda.")
-  },
-  en:{
-    lang:"Español",title:"This page fell off the radar.",kicker:"Signal interrupted",
-    copy:"The address may have changed or no longer exists. Head home to keep building momentum.",
-    home:"Back to home",wa:"Chat on WhatsApp",status:"Growth marketing and automation · Mexico",
-    url:"/en/",waUrl:"https://wa.me/522214276989?text="+encodeURIComponent("Hi, I saw your site and I need some help.")
-  }
+const texts={
+  es:{lang:"Español",title:"Parece que esta página perdió el momentum.",label:"Página no encontrada",intro:"La dirección puede haber cambiado o ya no existe. Te llevamos de vuelta para que sigas explorando.",home:"Volver al inicio",contact:"Hablar con nosotros",cta:"Agendar diagnóstico",tagline:"Growth marketing y automatización, México",rights:"Todos los derechos reservados.",nav:["el sistema","soluciones","cómo trabajamos","preguntas"],legal:["Privacidad","Términos","Cookies","Accesibilidad"],base:"/"},
+  en:{lang:"English",title:"It looks like this page lost momentum.",label:"Page not found",intro:"The address may have changed or no longer exists. Let’s get you back so you can keep exploring.",home:"Back to home",contact:"Talk to us",cta:"Book a diagnostic",tagline:"Growth marketing and automation, Mexico",rights:"All rights reserved.",nav:["the system","solutions","how we work","questions"],legal:["Privacy","Terms","Cookies","Accessibility"],base:"/en/"}
 };
 let locale=location.pathname.startsWith("/en/")?"en":"es";
 function render(){
-  const t=copy[locale];
+  const t=texts[locale],b=t.base;
   document.documentElement.lang=locale;
   document.title=locale==="es"?"Página no encontrada — GMomentum":"Page not found — GMomentum";
-  document.getElementById("lang").textContent=t.lang;
+  document.querySelector(".idioma-actual").textContent=t.lang;
   document.getElementById("title").textContent=t.title;
-  document.getElementById("kicker").textContent=t.kicker;
-  document.getElementById("copy").textContent=t.copy;
-  document.getElementById("home").innerHTML=t.home+' <span aria-hidden="true">→</span>';
-  document.getElementById("home").href=t.url;
-  document.getElementById("wa").textContent=t.wa;
-  document.getElementById("wa").href=t.waUrl;
-  document.getElementById("status").textContent=t.status;
+  document.getElementById("label").textContent=t.label;
+  document.getElementById("intro").textContent=t.intro;
+  document.getElementById("home").textContent=t.home;document.getElementById("home").href=b;
+  document.getElementById("contact").textContent=t.contact;document.getElementById("contact").href=b+"#contacto";
+  document.getElementById("header-cta").textContent=t.cta;document.getElementById("header-cta").href=b+"#contacto";
+  document.getElementById("brand").href=b;
+  ["system","solutions","process","faq"].forEach((x,i)=>{const a=document.getElementById("nav-"+x);a.textContent=t.nav[i];a.href=b+"#"+["sistema","soluciones","proceso","preguntas"][i]});
+  document.getElementById("tagline").textContent=t.tagline;document.getElementById("rights").textContent=t.rights;
+  const legal=document.querySelectorAll("#legal a");
+  const paths=locale==="es"?["legal/aviso-de-privacidad.html","legal/terminos-y-condiciones.html","legal/politica-de-cookies.html","legal/accesibilidad.html"]:["legal/privacy-policy.html","legal/terms-and-conditions.html","legal/cookie-policy.html","legal/accessibility.html"];
+  legal.forEach((a,i)=>{a.textContent=t.legal[i];a.href="/"+(locale==="en"?"en/":"")+paths[i]});
 }
 document.getElementById("lang").addEventListener("click",()=>{locale=locale==="es"?"en":"es";render()});
 document.getElementById("year").textContent=new Date().getFullYear();
